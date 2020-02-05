@@ -1,0 +1,110 @@
+{
+  "main": {
+    "name":"Damaso Fernandez",
+    "occupation":"(CS Student)",
+    "description":"",
+    "image":"profilepic.jpg",
+    "bio":"Use this bio section as your way of describing yourself and saying what you do, what technologies you like to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing in.",
+    "contactmessage":"Here is where you should write your message to readers to have them get in contact with you.",
+    "email": "damasofc@hotmail.com",
+    "phone": "---",
+    "address":{
+      "street":"(Your Street)",
+      "city":"(Your City)",
+      "state":"(Your State)",
+      "zip": "(Your Zip/Postal Code)"
+    },
+    "website": "",
+    "resumedownload":"",
+    "social":[
+      {
+        "name":"facebook",
+        "url":"http://facebook.com/damasofc",
+        "className":"fa fa-facebook"
+      },
+      {
+        "name":"twitter",
+        "url":"http://twitter.com/damasofc",
+        "className":"fa fa-twitter"
+      },
+      {
+        "name":"linkedin",
+        "url":"https://www.linkedin.com/in/damasofc/",
+        "className":"fa fa-linkedin"
+      },
+      {
+        "name":"instagram",
+        "url":"http://instagram.com/damasofc",
+        "className":"fa fa-instagram"
+      },
+      {
+        "name":"github",
+        "url":"http://github.com/damasofc",
+        "className":"fa fa-github"
+      }
+    ]
+  },
+  "resume":{
+    "skillmessage":"Here you can create a short write-up of your skills to show off to employers",
+    "education":[
+      {
+        "school":"UNITEC",
+        "degree":"Engineer in computational Systems",
+        "graduated":"September 2020",
+        "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
+      }
+    ],
+    "work":[
+      {
+        "company":"Acklen Avenue",
+        "title":"QA Intern",
+        "years":"January 2020 - Present",
+        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+      }
+    ],
+    "skills":[
+      {
+        "name":"Git",
+        "level":"80%"
+      },
+      {
+        "name":"ReactJs",
+        "level":"60%"
+      },
+      {
+        "name":"CSS",
+        "level":"70%"
+      },
+      {
+        "name":"HTML5",
+        "level":"70%"
+      },
+      {
+        "name":"ReactNative",
+        "level":"60%"
+      },
+      {
+        "name":"MongoDB",
+        "level":"50%"
+      }
+    ]
+  },
+  "portfolio":{
+    "projects": [
+      {
+        "title":"Android App",
+        "category":"A CRUD Android app for a company",
+        "image":"overlay-bg.png",
+        "url":"http://www.timbakerdev.comhttps://play.google.com/store/apps/details?id=com.damasofc.transportesjeffry&hl=en_US"
+      }
+    ]
+  },
+  "testimonials":{
+    "testimonials":[
+      {
+        "text":"Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
+        "user":"DAFC"
+      }
+    ]
+  }
+}
