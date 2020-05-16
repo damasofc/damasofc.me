@@ -4,18 +4,18 @@
     "occupation":"(CS Student)",
     "description":"",
     "image":"profilepic.jpg",
-    "bio":"Use this bio section as your way of describing yourself and saying what you do, what technologies you like to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing in.",
-    "contactmessage":"Here is where you should write your message to readers to have them get in contact with you.",
+    "bio":"I'm a Christ Follower and a very passionate person of CS, I love to work with new technologies, and I love to learn from others.",
+    "contactmessage":"If you have an idea, of a web app or mobile app, contact me, you'll put your project in good hands.",
     "email": "damasofc@hotmail.com",
-    "phone": "---",
+    "phone": "",
     "address":{
-      "street":"(Your Street)",
-      "city":"(San Pedro Sula)",
-      "state":"(Your State)",
-      "zip": "(Your Zip/Postal Code)"
+      "street":"",
+      "city":"San Pedro Sula",
+      "state":"Cortes",
+      "zip": ""
     },
     "website": "",
-    "resumedownload":"",
+    "resumedownload":"./Resume_Damaso_Fernandez.pdf",
     "social":[
       {
         "name":"facebook",
@@ -45,24 +45,38 @@
     ]
   },
   "resume":{
-    "skillmessage":"Here you can create a short write-up of your skills to show off to employers",
+    "skillmessage":"",
     "education":[
+      {
+        "school":"Universitat Politecnica de Valencia (UPV)",
+        "degree":"Emerging Technologies & Intelligent Systems",
+        "graduated":"July 2019",
+        "description":"Was a great experience learning from top teachers in the area of embedded devices, and IOT, one of my best experience learning from great teachers."
+      },
       {
         "school":"UNITEC",
         "degree":"Engineer in computational Systems",
         "graduated":"September 2020",
-        "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
+        "description":"A great Univerisity with great teachers, that have taught me about the majority of things I know in CS, such as data structures, Databases and good programming practices"
       }
     ],
     "work":[
       {
         "company":"Acklen Avenue",
-        "title":"QA Intern",
+        "title":"QA Engineer",
         "years":"January 2020 - Present",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "description":"Here I have been developing as QA, in manual testing, but also Automated testing using tools like cypress and Gitlab for the CI"
       }
     ],
     "skills":[
+      {
+        "name": "Firebase",
+        "level": "80%"
+      },
+      {
+        "name":"ReactNative",
+        "level":"80%"
+      },
       {
         "name":"Git",
         "level":"80%"
@@ -80,10 +94,6 @@
         "level":"70%"
       },
       {
-        "name":"ReactNative",
-        "level":"60%"
-      },
-      {
         "name":"MongoDB",
         "level":"50%"
       }
@@ -96,14 +106,20 @@
         "category":"A CRUD Android app for a company",
         "image":"overlay-bg.png",
         "url":"https://play.google.com/store/apps/details?id=com.damasofc.transportesjeffry&hl=en_US"
+      },
+      {
+        "title":"React Native App",
+        "category":"An App to register daily payments, I use in this project ReactNative and Redux, and as backend I use Firebase, essentialy using cloud firestore and using cloud functions too.",
+        "image":"pagosencontrol.png",
+        "url":"https://play.google.com/store/apps/details?id=com.damasofc.pagosencontrol"
       }
     ]
   },
   "testimonials":{
     "testimonials":[
       {
-        "text":"Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
-        "user":"DAFC"
+        "text":"But one thing I do: Forgetting what is behind and straining toward what is ahead...",
+        "user":"Philippians 3:13"
       }
     ]
   }
