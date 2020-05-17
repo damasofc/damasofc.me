@@ -1,18 +1,105 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class Contact extends Component {
-  render() {
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
-    if(this.props.data){
-      var name = this.props.data.name;
-      var street = this.props.data.address.street;
-      var city = this.props.data.address.city;
-      var state = this.props.data.address.state;
-      var zip = this.props.data.address.zip;
-      var phone= this.props.data.phone;
-      var email = this.props.data.email;
-      var message = this.props.data.contactmessage;
+var firebaseConfig = {
+   apiKey: "AIzaSyBGq7DXg0gFH7trHIe-HtU6zlH0zmenJH8",
+   authDomain: "damasofc-site.firebaseapp.com",
+   databaseURL: "https://damasofc-site.firebaseio.com",
+   projectId: "damasofc-site",
+   storageBucket: "damasofc-site.appspot.com",
+   messagingSenderId: "1047009700207",
+   appId: "1:1047009700207:web:17ea0ffa9f988cf25f209a",
+   measurementId: "G-8C18DEG1TS"
+ };
+
+firebase.initializeApp(firebaseConfig);
+
+
+const Contact = (props) => {
+   const [formData, setFormData] = useState({})
+   const [message, setmessage] = useState('')
+   const [street, setstreet] = useState('')
+   const [city, setcity] = useState('')
+   const [state, setstate] = useState('')
+   const [name, setname] = useState('')
+   const [zip, setzip] = useState('')
+   const [phone, setphone] = useState('')
+   const [email, setemail] = useState('')
+   const [showMessage, setshowMessage] = useState(false)
+   const [isError, setisError] = useState(false)
+   
+   const updateInput = e => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      })
+      
+   }
+
+   const handleSubmit = event => {
+      event.preventDefault()
+      // enviar correo
+      if(!formData.subject || !formData.message || !formData.email){
+         setshowMessage(true)
+         setisError(true);
+         setTimeout(() => {
+            setshowMessage(false);
+         },4000)
+         return;
+      } else {
+         if(!formData.subject.length > 0 || !formData.message.length > 0 || !formData.email.length > 0){
+            setshowMessage(true)
+            setisError(true);
+            setTimeout(() => {
+               setshowMessage(false);
+            },4000)
+            return;
+         }
+      }
+      firebase.firestore().collection('mail').add({
+         to: ['damasofc@hotmail.com','damaso1994@gmail.com'],
+         message: {
+            subject: 'SITIO: '+formData.subject,
+            text: 'Mensaje de: '+ formData.name+'\n'+formData.message+'\nFrom: '+formData.email,
+         }
+      }).then(() => {
+         setFormData({
+            name: '',
+            email: '',
+            message: '',
+          })
+         setshowMessage(true)
+         setisError(false);
+         setTimeout(() => {
+            setshowMessage(false);
+            setisError(false);
+         },4000)
+      }).catch(err => {
+         console.log(err);
+         setshowMessage(true);
+         setisError(true)
+         setTimeout(() => {
+            setshowMessage(false);
+            setisError(false);
+         },4000)
+      })
     }
+
+   useEffect(() => {
+      if(props.data){
+         setname(props.data.name);
+         setstreet(props.data.address.street);
+         setcity(props.data.address.city);
+         setstate(props.data.address.state);
+         setzip(props.data.address.zip);
+         setphone(props.data.phone);
+         setemail(props.data.email);
+         setmessage(props.data.contactmessage);
+       }
+   })
+
 
     return (
       <section id="contact">
@@ -36,27 +123,27 @@ class Contact extends Component {
          <div className="row">
             <div className="eight columns">
 
-               <form action="" method="post" id="contactForm" name="contactForm">
+               <form onSubmit={handleSubmit} name="contactForm">
 					<fieldset>
 
                   <div>
 						   <label htmlFor="contactName">Name <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleChange}/>
+						   <input type="text" defaultValue="" size="35" value={formData.name || ''} id="contactName" name="name" onChange={updateInput}/>
                   </div>
 
                   <div>
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange}/>
+						   <input type="text" defaultValue="" size="35" value={formData.email || ''} id="contactEmail" name="email" onChange={updateInput}/>
                   </div>
 
                   <div>
 						   <label htmlFor="contactSubject">Subject</label>
-						   <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange}/>
+						   <input type="text" defaultValue="" size="35" value={formData.subject || ''} id="contactSubject" name="subject" onChange={updateInput}/>
                   </div>
 
                   <div>
                      <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                     <textarea cols="50" rows="15" value={formData.message || ''} id="contactMessage" name="message" onChange={updateInput}></textarea>
                   </div>
 
                   <div>
@@ -68,10 +155,17 @@ class Contact extends Component {
 					</fieldset>
 				   </form>
 
-           <div id="message-warning"> Error boy</div>
-				   <div id="message-success">
+            {showMessage && !isError &&
+               <div>
                   <i className="fa fa-check"></i>Your message was sent, thank you!<br />
 				   </div>
+            }
+            {showMessage && isError &&
+               <div>
+                  <i className="fa fa-times"></i>There is an error<br />
+				   </div>
+
+            }
            </div>
 
 
@@ -112,7 +206,6 @@ class Contact extends Component {
       </div>
    </section>
     );
-  }
 }
 
 export default Contact;
