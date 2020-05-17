@@ -77,7 +77,7 @@ const Contact = (props) => {
          setTimeout(() => {
             setshowMessage(false);
             setisError(false);
-         },4000)
+         },10000)
       }).catch(err => {
          console.log(err);
          setshowMessage(true);
@@ -85,7 +85,7 @@ const Contact = (props) => {
          setTimeout(() => {
             setshowMessage(false);
             setisError(false);
-         },4000)
+         },10000)
       })
     }
 

@@ -1,8 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const nodemailer = require('nodemailer');
 const cors = require('cors')({origin: true});
-const sendgridTransport = require('nodemailer-sendgrid-transport');
+const sgMail = require("@sendgrid/mail");
 admin.initializeApp();
 
 // // Create and Deploy Your First Cloud Functions
@@ -12,33 +11,23 @@ admin.initializeApp();
 //  response.send("Hello from Firebase!");
 // });
 
-const transporter = nodemailer.createTransport(
-    sendgridTransport({
-      auth: {
-        api_user: 'damasofc',    // SG username
-        api_key: 'Dafcjordan2*', // SG password
-      },
-    })
-  );
-
 
 exports.answerEmail = functions.firestore
-    .document(`email/{docId}`)
+    .document(`mail/{docId}`)
     .onCreate((change, context) => {
         const dataMail = change.data();
         
         const mailOptions = {
-            from: 'no-reply@damasofc.me',
+            from: 'damasofc@unitec.edu',
             to: dataMail.fromEmail,
             subject: 'damasofc.me: answer', // email subject
             html: `<div>I will contact you soon, thank you for your interest in my services <br /> God Bless You, <br /> Damaso F.</div>
             ` // email content in HTML
         };
-
-        return transporter.sendMail(mailOptions,(erro,info) => {
-            if(erro){
-                return res.send(erro.toString());
-            }
-            return res.send('Sended');
+        return admin.firestore().doc('data/sendGrid').get().then(snap => {
+            sgMail.setApiKey(snap.data().api_key)
+            return sgMail.send(mailOptions);
+        }).catch((err) => {
+            return err
         })
     })
