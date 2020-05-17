@@ -59,6 +59,8 @@ const Contact = (props) => {
          }
       }
       firebase.firestore().collection('mail').add({
+         fromName: formData.name,
+         fromEmail: formData.email,
          to: ['damasofc@hotmail.com','damaso1994@gmail.com'],
          message: {
             subject: 'SITIO: '+formData.subject,
